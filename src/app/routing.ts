@@ -6,7 +6,7 @@ import { DetalhesComponent } from './pages/detalhes/detalhes.component';
 
 const rotasDaApp: Routes = [
     {path: '', component: ListaComponent},
-    {path: 'detalhes/:_id', component: DetalhesComponent},
+    {path: 'detalhes/:name/:url', component: DetalhesComponent},
     {path: '**', component: Page404Component }
 ];
 
