@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PokeapiService } from '../../services/pokeapi.service';
 import { HttpResponse } from '@angular/common/http';
+import { PokemonComponent } from '../../components/pokemon/pokemon.component';
 
 
 @Component({
@@ -13,8 +14,14 @@ export class DetalhesComponent implements OnInit {
   name : string;
   url : string;
   pokemon : any;
+  
 
   constructor(private pokeapi : PokeapiService, private rota : ActivatedRoute, private router : Router) {
+    this.pokemon = {name : 'Nome',
+                    weight : 'Peso', 
+                    height : 'Altura', 
+                    base_experience : 'EXP'};
+
     rota.params.subscribe((parametros) => {
       const url = parametros.url;
       const name = parametros.name;
