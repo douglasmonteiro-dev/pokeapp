@@ -25,14 +25,40 @@
     </div>
   </div> -->
   <div class="row mt-3">
-    <div class="col-6">
+    <div class="col-4">
       <pokemon 
             [name]="name" 
             [url]="url"> 
       </pokemon>
     </div>
-    <div class="col-6">
-      <pre> {{pokemon | json}} </pre>
+    <div class="col-8">
+      <table class="col-10 ml-auto table table-responsive">
+        <thead class="thead-dark">
+          <tr>
+              <th scope="col">Característica</th>
+              <th scope="col">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <th scope="row">Nome</th>
+            <td class="text-capitalize">{{pokemon.name}}</td>
+          </tr>
+          <tr>
+              <th scope="row">Peso</th>
+              <td  class="text-capitalize">{{pokemon.weight}}</td>
+          </tr>
+          <tr>
+              <th scope="row">Altura</th>
+              <td  class="text-capitalize">{{pokemon.height}}</td>
+          </tr>
+          <tr>
+              <th scope="row">EXP</th>
+              <td  class="text-capitalize">{{pokemon.base_experience}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <pre> {{pokemon | json}} </pre> -->
     </div>
   </div>
   

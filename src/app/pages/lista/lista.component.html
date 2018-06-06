@@ -4,7 +4,12 @@
       <a [routerLink]="['/']" class="navbar-brand d-flex align-items-center">
         <strong>Pokedex</strong>
       </a>
+      <form class="form-inline">
+          <input #inputDaBusca (input)="0" class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
+          <button class="btn btn-outline-ligth my-2 my-sm-0" type="submit">Pesquisar</button>
+        </form>
     </div>
+   
   </div>
 </header>
 
@@ -23,18 +28,18 @@
   </div> -->
   <div class="row mt-3">
     <pokemon class="col-4"
-            *ngFor="let item of pokemons"  
+            *ngFor="let item of pokemons | filtraPorNome: inputDaBusca.value"  
             [name]="item.name" 
             [url]="item.url"> 
 
-              <a class="btn btn-primary" role="button" [routerLink]="['/detalhes', item.name, item.url]">Detalhes</a>
+              <a class="btn btn-outline-dark" role="button" [routerLink]="['/detalhes', item.name, item.url]">Detalhes</a>
 
             
     </pokemon>
   </div>
   <div class="row">
-    <nav aria-label="Page navigation example" class="col-12">
-    <ul class="pagination justify-content-end  mr-3">
+    <nav class="col-12">
+    <ul class="pagination justify-content-end mr-3">
       <li class="page-item">
         <button class="page-link"  [disabled]="!anterior" (click)="paginaAnterior()" tabindex="-1">Anterior</button>
       </li>
