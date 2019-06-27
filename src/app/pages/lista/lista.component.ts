@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpResponse } from '@angular/common/http'
-
-import { PokemonModule } from '../../components/pokemon/pokemon.module'
-
-import { PokeapiService } from '../../services/pokeapi.service'
+import { HttpResponse } from '@angular/common/http';
+import { PokeapiService } from '../../services/pokeapi.service';
 
 
 
@@ -14,21 +11,20 @@ import { PokeapiService } from '../../services/pokeapi.service'
 })
 export class ListaComponent implements OnInit {
 
-  title: string = 'Pokedex';
+  title = 'Pokedex';
   pokemons: Array<any> = [ ];
-  pokemonsPorPagina: number = 0;
-  total: number = 0;
+  pokemonsPorPagina = 0;
+  total = 0;
   proximo: string = null;
   anterior: string = null;
-  paginas: number = 0;
+  paginas = 0;
 
-  
-  constructor(private pokeapi : PokeapiService) { 
+
+  constructor(private pokeapi: PokeapiService) {
     this.listar();
   }
 
   ngOnInit() {
-      
   }
 
   setPokemonsPorPagina() {
@@ -38,7 +34,7 @@ export class ListaComponent implements OnInit {
   listar() {
     this.pokeapi.lista()
     .subscribe((dados: HttpResponse<any>) => {
-      let response = dados.body;
+      const response = dados.body;
       this.pokemons = response.results ;
       this.total = response.count;
       this.proximo = response.next;
@@ -48,25 +44,23 @@ export class ListaComponent implements OnInit {
   proximaPagina() {
     this.pokeapi.consulta(this.proximo)
     .subscribe((dados: HttpResponse<any>) => {
-      let response = dados.body;
+      const response = dados.body;
       this.pokemons = response.results ;
       this.total = response.count;
       this.proximo = response.next;
       this.anterior = response.previous;
-      window.scroll(0,0);
+      window.scroll(0, 0);
     });
-    
   }
   paginaAnterior() {
     this.pokeapi.consulta(this.anterior)
     .subscribe((dados: HttpResponse<any>) => {
-      let response = dados.body;
+      const response = dados.body;
       this.pokemons = response.results ;
       this.total = response.count;
       this.proximo = response.next;
       this.anterior = response.previous;
-      window.scroll(0,0);
+      window.scroll(0, 0);
     });
-    
   }
 }
