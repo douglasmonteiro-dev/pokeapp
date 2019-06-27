@@ -7,7 +7,7 @@ export class PokeapiService {
 
   constructor (private httpClient: HttpClient) {
   }
-  URL = 'http://pokeapi.co/api/v2/pokemon';
+  URL = 'https://pokeapi.co/api/v2/pokemon';
 
   lista(): Observable<Object> {
      return this.httpClient.get(this.URL, { observe: 'response'}) ;
