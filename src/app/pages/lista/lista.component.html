@@ -27,7 +27,7 @@
   </div> -->
   <div class="row">
       <nav class="col-12">
-        <ul class="pagination justify-content-end mr-3">
+        <ul class="pagination justify-content-end mr-3 mt-4">
           <li class="page-item">
             <button class="page-link text-dark" [disabled]="!anterior" (click)="paginaAnterior()" tabindex="-1">Anterior</button>
           </li>
@@ -42,7 +42,7 @@
     </div>
 <div class="container d-flex justify-content-center mt-3">
   <div class="row">
-      <pokemon class="col-4" *ngFor="let item of pokemons | filtraPorNome: inputDaBusca.value" [name]="item.name" [url]="item.url">
+      <pokemon class="col-xl-3 col-lg-4 col-md-4 col-sm-5 col-6" *ngFor="let item of pokemons | filtraPorNome: inputDaBusca.value" [name]="item.name" [url]="item.url">
 
           <a class="btn btn-outline-dark" role="button" [routerLink]="['/detalhes', item.name, item.url]">Detalhes</a>
       
