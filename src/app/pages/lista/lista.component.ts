@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { PokeapiService } from '../../services/pokeapi.service';
 
@@ -19,14 +19,17 @@ export class ListaComponent implements OnInit {
   anterior: string = null;
   paginas = 0;
 
-
   constructor(private pokeapi: PokeapiService) {
     this.listar();
   }
 
   ngOnInit() {
   }
-
+  onScroll() {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      this.proximaPagina();
+    }
+  }
   setPokemonsPorPagina() {
     this.paginas = this.total / this.pokemonsPorPagina;
   }
@@ -45,11 +48,10 @@ export class ListaComponent implements OnInit {
     this.pokeapi.consulta(this.proximo)
     .subscribe((dados: HttpResponse<any>) => {
       const response = dados.body;
-      this.pokemons = response.results ;
+      this.pokemons = this.pokemons.concat(response.results);
       this.total = response.count;
       this.proximo = response.next;
       this.anterior = response.previous;
-      window.scroll(0, 0);
     });
   }
   paginaAnterior() {
@@ -62,5 +64,8 @@ export class ListaComponent implements OnInit {
       this.anterior = response.previous;
       window.scroll(0, 0);
     });
+  }
+  scrollTop() {
+    window.scroll(0, 0);
   }
 }
