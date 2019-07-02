@@ -11,13 +11,14 @@ import { PokeapiService } from '../../services/pokeapi.service';
 })
 export class ListaComponent implements OnInit {
 
-  title = 'Pokedex';
+  title = 'PokeApp';
   pokemons: Array<any> = [ ];
   pokemonsPorPagina = 0;
   total = 0;
   proximo: string = null;
   anterior: string = null;
   paginas = 0;
+  showSearchInput: boolean;
 
   constructor(private pokeapi: PokeapiService) {
     this.listar();
@@ -67,5 +68,8 @@ export class ListaComponent implements OnInit {
   }
   scrollTop() {
     window.scroll(0, 0);
+  }
+  toggleSearch() {
+    this.showSearchInput = !this.showSearchInput;
   }
 }

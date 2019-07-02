@@ -1,15 +1,19 @@
 <header>
-  <div class="navbar navbar-dark bg-dark box-shadow">
+  <mat-toolbar color="primary">
     <div class="container d-flex justify-content-between">
-      <a [routerLink]="['/']" class="navbar-brand d-flex align-items-center">
-        <strong>PokeApp</strong>
+      <a [routerLink]="['/']">
+        <span class="title">PokeApp</span>
       </a>
+      
       <form class="form-inline">
-        <input #inputDaBusca (input)="0" class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
+        <button mat-icon-button aria-label="Clique para Pesquisar um Pokemon" (click)="toggleSearch()" *ngIf="!showSearchInput">
+          <mat-icon>search</mat-icon>
+        </button>
+        <input #inputDaBusca (input)="0" class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search" [hidden]="!showSearchInput">
       </form>
     </div>
 
-  </div>
+  </mat-toolbar>
 </header>
 
 <!-- <div class="row mt-3">
