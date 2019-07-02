@@ -48,7 +48,7 @@ export class ListaComponent implements OnInit {
     this.pokeapi.consulta(this.proximo)
     .subscribe((dados: HttpResponse<any>) => {
       const response = dados.body;
-      this.pokemons = this.pokemons.concat(response.results);
+      this.pokemons = [...this.pokemons, ...response.results];
       this.total = response.count;
       this.proximo = response.next;
       this.anterior = response.previous;
