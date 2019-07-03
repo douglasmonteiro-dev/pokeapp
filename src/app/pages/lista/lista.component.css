@@ -1,3 +1,13 @@
 .title {
     color: white;
 }
+.container {
+    padding: 0;
+}
+.row {
+    padding: 5px;
+}
+.pokemon {
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+}

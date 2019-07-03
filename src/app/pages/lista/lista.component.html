@@ -31,7 +31,7 @@
   </div> -->
 <div class="container d-flex justify-content-center mt-3">
   <div class="row col-12" (window:scroll)="onScroll()">
-      <pokemon class="col-xl-3 col-lg-4 col-md-4 col-sm-5 col-6" *ngFor="let item of pokemons | filtraPorNome: inputDaBusca.value" [name]="item.name" [url]="item.url" [routerLink]="['/detalhes', item.name, item.url]">      
+      <pokemon class="pokemon col-xl-3 col-lg-4 col-md-4 col-sm-5 col-6" *ngFor="let item of pokemons | filtraPorNome: inputDaBusca.value" [name]="item.name" [url]="item.url" [routerLink]="['/detalhes', item.name, item.url]">      
       
         </pokemon>
   </div>
